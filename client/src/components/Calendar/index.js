@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiCalendar from 'react-google-calendar-api';
+import './styles.css';
 
 class StatusSign extends React.Component {
     constructor(props) {
@@ -49,16 +50,16 @@ class Calendar extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <button
                     onClick={(e) => this.handleItemClick(e, 'sign-in')}
                 >
-                    sign-in
+                    Sign-in
             </button>
                 <button
                     onClick={(e) => this.handleItemClick(e, 'sign-out')}
                 >
-                    sign-out
+                    Sign-out
             </button>
                 <StatusSign />
             </div>
