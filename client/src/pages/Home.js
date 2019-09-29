@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
+import DoubleButton from "../components/Calendar";
 
 class Home extends Component {
   state = {
@@ -59,6 +60,10 @@ class Home extends Component {
   render() {
     return (
       <Container>
+
+      <DoubleButton />
+
+
         <Row>
           <Col size="md-12">
             <Jumbotron>
