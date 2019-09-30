@@ -21,7 +21,7 @@ class Calendar extends React.Component {
         if (name === 'sign-in') {
             ApiCalendar.handleAuthClick();
         } else if (name === 'sign-out') {
-            this.setState({events: []});
+            this.setState({ events: [] });
             ApiCalendar.handleSignoutClick();
         }
     }
@@ -34,7 +34,7 @@ class Calendar extends React.Component {
                 .then(({ result }) => {
                     console.log(result.items);
                     events = result.items;
-                    this.setState({events: events});
+                    this.setState({ events: events });
                 });
         this.setState({
             sign: sign
@@ -42,9 +42,27 @@ class Calendar extends React.Component {
     }
 
     render() {
+        // const isLoggedIn = this.state.sign;
+        let button;
+
+        if (!this.state.sign) {
+            button = <button
+                onClick={(e) => this.handleItemClick(e, 'sign-in')}
+            >
+                Sign-in
+    </button>
+        } else {
+            button = <button
+            onClick={(e) => this.handleItemClick(e, 'sign-out')}
+        >
+            Sign-out
+    </button>
+        }
+
         return (
             <div className="container">
-                <button
+                {button}
+                {/* <button
                     onClick={(e) => this.handleItemClick(e, 'sign-in')}
                 >
                     Sign-in
@@ -53,10 +71,11 @@ class Calendar extends React.Component {
                     onClick={(e) => this.handleItemClick(e, 'sign-out')}
                 >
                     Sign-out
-            </button>
+            </button> */}
                 <div>
                     You are signed {this.state.sign ? "in" : "out"}!
                 </div>
+
             </div>
         );
     }
